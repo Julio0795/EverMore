@@ -118,12 +118,61 @@ body {
 
 footer { padding: 60px 0; text-align: center; font-size: 0.9rem; color: var(--text-muted); border-top: 1px solid var(--border); }
 
-/* --- Mobile --- */
+/* --- Enhanced Mobile Auto-Adjustment --- */
 @media (max-width: 768px) {
-    .navbar { height: 70px; }
-    .main-logo { height: 80px; top: 50%; transform: translateY(-50%); }
-    .hero { padding: 120px 0 60px; }
-    .hero h1 { font-size: 2.2rem; }
-    .nav-links li:not(:nth-last-child(1)):not(:nth-last-child(2)) { display: none; }
-    .btn-secondary { margin-left: 0; margin-top: 12px; display: block; }
+    /* 1. Shrink Navbar and Logo so they don't take up half the screen */
+    .navbar { 
+        height: 70px; 
+    }
+    .logo-wrapper {
+        width: 100px;
+    }
+    .main-logo { 
+        height: 100px; /* Scaled down for mobile */
+        top: 50%;
+        transform: translateY(-50%); 
+    }
+
+    /* 2. Adjust Hero spacing so text starts below the logo */
+    .hero { 
+        padding: 120px 0 60px; 
+    }
+    .hero h1 { 
+        font-size: 2rem; /* Smaller font for mobile screens */
+        padding: 0 10px;
+    }
+    .subheadline {
+        font-size: 1.1rem;
+    }
+
+    /* 3. Stack Buttons vertically for easier tapping */
+    .hero-btns, .cta-btns, .contact-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px; /* Standard mobile button width */
+        margin-left: 0 !important; /* Removes the side margin we used for desktop */
+        text-align: center;
+    }
+
+    /* 4. Simplify Navigation Menu */
+    .nav-links li:not(:nth-last-child(1)):not(:nth-last-child(2)) { 
+        display: none; /* Only show 'ES' and 'Get Started' on mobile */
+    }
+
+    /* 5. Adjust Section Spacing */
+    .section { 
+        padding: 60px 0; 
+    }
+    .intro-text {
+        font-size: 1.1rem;
+    }
+    .grid {
+        grid-template-columns: 1fr; /* Force cards into a single column */
+    }
 }
