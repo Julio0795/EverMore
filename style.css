@@ -118,61 +118,88 @@ body {
 
 footer { padding: 60px 0; text-align: center; font-size: 0.9rem; color: var(--text-muted); border-top: 1px solid var(--border); }
 
-/* --- Enhanced Mobile Auto-Adjustment --- */
+/* --- FULL MOBILE AUTO-ADJUST FIX --- */
 @media (max-width: 768px) {
-    /* 1. Shrink Navbar and Logo so they don't take up half the screen */
+    /* 1. Reset Container padding for small screens */
+    .container {
+        padding: 0 1.5rem;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* 2. Fix the Logo so it doesn't overlap */
     .navbar { 
         height: 70px; 
     }
     .logo-wrapper {
-        width: 100px;
+        width: 80px;
     }
     .main-logo { 
-        height: 100px; /* Scaled down for mobile */
+        height: 90px; 
         top: 50%;
         transform: translateY(-50%); 
+        mix-blend-mode: multiply;
     }
 
-    /* 2. Adjust Hero spacing so text starts below the logo */
+    /* 3. Hero Section: Large, Readable Text */
     .hero { 
-        padding: 120px 0 60px; 
+        padding: 100px 0 40px; 
     }
     .hero h1 { 
-        font-size: 2rem; /* Smaller font for mobile screens */
-        padding: 0 10px;
+        font-size: 2.2rem; /* Big enough to read without zooming */
+        line-height: 1.2;
+        margin-bottom: 20px;
     }
     .subheadline {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        line-height: 1.5;
+        padding: 0 5px;
     }
 
-    /* 3. Stack Buttons vertically for easier tapping */
+    /* 4. Buttons: Easy to tap with a thumb */
     .hero-btns, .cta-btns, .contact-methods {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        align-items: center;
-    }
-
-    .btn {
         width: 100%;
-        max-width: 300px; /* Standard mobile button width */
-        margin-left: 0 !important; /* Removes the side margin we used for desktop */
+        align-items: center;
+        gap: 15px;
+    }
+    .btn {
+        width: 100% !important; /* Forces buttons to span the screen width */
+        max-width: 100%;
+        padding: 1.2rem; /* Thicker buttons for mobile */
+        font-size: 1.1rem;
+        margin: 0 !important;
         text-align: center;
     }
 
-    /* 4. Simplify Navigation Menu */
-    .nav-links li:not(:nth-last-child(1)):not(:nth-last-child(2)) { 
-        display: none; /* Only show 'ES' and 'Get Started' on mobile */
-    }
-
-    /* 5. Adjust Section Spacing */
+    /* 5. Section Text: Increase size for readability */
     .section { 
-        padding: 60px 0; 
+        padding: 50px 0; 
+    }
+    .section-title {
+        font-size: 1.8rem;
     }
     .intro-text {
+        font-size: 1.25rem; /* Larger text for the problem section */
+        text-align: left; /* Easier to read on mobile */
+    }
+    .card p, .bullet-list li {
         font-size: 1.1rem;
     }
-    .grid {
-        grid-template-columns: 1fr; /* Force cards into a single column */
+
+    /* 6. Navigation: Hide extra links */
+    .nav-links li:not(:nth-last-child(1)):not(:nth-last-child(2)) { 
+        display: none; 
+    }
+
+    /* 7. Grid: Stack everything in 1 column */
+    .grid, .steps {
+        display: block;
+    }
+    .card, .step {
+        margin-bottom: 20px;
+        width: 100%;
     }
 }
+
